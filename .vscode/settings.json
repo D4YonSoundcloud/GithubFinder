@@ -1,0 +1,6 @@
+{
+    "editor.hover.delay": 100,
+    "editor.mouseWheelZoom": true,
+    "editor.minimap.maxColumn": 10,
+    "editor.minimap.renderCharacters": false
+}
