@@ -8,6 +8,7 @@ const Users = () => {
     const githubContext = useContext(GithubContext);
     
     const { loading, users } = githubContext;
+
     if(loading) {
         return <Spinner/>
     } else {
@@ -21,10 +22,6 @@ const Users = () => {
     }
 }
 
-Users.propTypes = {
-    users: propTypes.array.isRequired,
-    loading: propTypes.bool.isRequired
-}
 const userStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
