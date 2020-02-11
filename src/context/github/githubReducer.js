@@ -19,12 +19,6 @@ export default (state, action) => {
         ...state,
         loading: true
       };
-    case SEARCH_USERS:
-      return {
-        ...state,
-        user: action.payload,
-        loading: false
-    };
     case GET_REPOS: 
     return {
         ...state,
@@ -37,6 +31,12 @@ export default (state, action) => {
         users: [],
         loading: false
       };
+    case GET_USER:
+        return {
+            ...state,
+            user: action.payload,
+            loading: false
+        }
     default:
       return state;
   }

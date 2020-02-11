@@ -1,24 +1,20 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Alert from "./components/layout/Alert";
-import Users from "./components/users/Users";
 import User from "./components/users/User";
-import Search from "./components/users/Search";
 import About from "./components/pages/About";
+import Home from "./components/pages/Home";
+import NotFound from "./components/pages/NotFound";
 import GithubState from './context/github/GithubState'
+import AlertState from './context/alert/AlertState'
 import "./App.css";
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-
-  const showAlert = (msg, type) => {
-    setAlert({msg, type});
-    setTimeout(() => setAlert( null ), 3000);
-  };
 
     return (
       <GithubState>
+        <AlertState>
       <Router>
         <div className="App">
           <Navbar icon="fab fa-github"></Navbar>
@@ -27,14 +23,7 @@ const App = () => {
             <Route
               exact
               path="/"
-              render={props => (
-                <Fragment>
-                  <Search
-                    setAlert={showAlert}
-                  ></Search>
-                  <Users></Users>
-                </Fragment>
-              )}
+              component = {Home}
             ></Route>
             <Route exact path="/about" component={About}></Route>
             <Route
@@ -42,9 +31,11 @@ const App = () => {
               path="/user/:login"
               component={User}
             ></Route>
+            <Route component={NotFound}></Route>
           </Switch>
         </div>
       </Router>
+      </AlertState>
       </GithubState>
     );
 }
